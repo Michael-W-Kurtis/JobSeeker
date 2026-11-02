@@ -1,0 +1,45 @@
+{
+  "results": [
+    {
+      "id": "1001",
+      "title": "Senior DevOps Engineer",
+      "description": "Kubernetes, Terraform, on-call. Hybrid in New York.",
+      "created": "2026-11-01T12:00:00Z",
+      "redirect_url": "https://www.adzuna.com/details/1001",
+      "company": {"display_name": "Acme Cloud"},
+      "location": {"display_name": "New York, New York", "area": ["US", "New York", "New York"]},
+      "category": {"tag": "it-jobs"}
+    },
+    {
+      "id": "1002",
+      "title": "Junior DevOps Engineer",
+      "description": "Entry level Kubernetes role in New York.",
+      "created": "2026-11-01T12:00:00Z",
+      "redirect_url": "https://www.adzuna.com/details/1002",
+      "company": {"display_name": "Acme Cloud"},
+      "location": {"display_name": "New York, New York", "area": ["US", "New York"]},
+      "category": {"tag": "it-jobs"}
+    },
+    {
+      "id": "1003",
+      "title": "Marketing Manager",
+      "description": "Brand campaigns. New York office.",
+      "created": "2026-11-01T12:00:00Z",
+      "redirect_url": "https://www.adzuna.com/details/1003",
+      "company": {"display_name": "Ad Co"},
+      "location": {"display_name": "New York, New York", "area": ["US", "New York"]},
+      "category": {"tag": "pr-advertising-marketing-jobs"}
+    },
+    {
+      "id": "1004",
+      "title": "SRE",
+      "description": "Site reliability, remote United States.",
+      "created": "2026-11-01T13:00:00Z",
+      "redirect_url": "https://www.adzuna.com/details/1004",
+      "company": {"display_name": "Remote Labs"},
+      "location": {"display_name": "Remote, United States", "area": ["US"]},
+      "category": {"tag": "it-jobs"}
+    }
+  ],
+  "count": 4
+}
