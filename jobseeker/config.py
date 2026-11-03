@@ -42,6 +42,8 @@ class Config:
     where: str
     distance_km: int
     max_days_old: int
+    salary_min: int
+    salary_max: int
     country: str
     state_dir: Path
     repo_root: Path
@@ -73,7 +75,9 @@ def load_config(
         telegram_chat_id=chat_id,
         where=where or _optional("JOBSEEKER_WHERE", "New York"),
         distance_km=int(_optional("JOBSEEKER_DISTANCE_KM", "40")),
-        max_days_old=int(_optional("JOBSEEKER_MAX_DAYS_OLD", "7")),
+        max_days_old=int(_optional("JOBSEEKER_MAX_DAYS_OLD", "14")),
+        salary_min=int(_optional("JOBSEEKER_SALARY_MIN", "60000")),
+        salary_max=int(_optional("JOBSEEKER_SALARY_MAX", "120000")),
         country=_optional("JOBSEEKER_COUNTRY", "us"),
         state_dir=state_dir or Path(_optional("JOBSEEKER_STATE_DIR", str(repo_root / "data"))),
         repo_root=repo_root,

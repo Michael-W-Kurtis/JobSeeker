@@ -7,8 +7,10 @@
       "created": "2026-11-01T12:00:00Z",
       "redirect_url": "https://www.adzuna.com/details/1001",
       "company": {"display_name": "Acme Cloud"},
-      "location": {"display_name": "New York, New York", "area": ["US", "New York", "New York"]},
-      "category": {"tag": "it-jobs"}
+      "location": {"display_name": "Manhattan, New York", "area": ["US", "New York", "New York City", "Manhattan"]},
+      "category": {"tag": "it-jobs"},
+      "salary_min": 90000,
+      "salary_max": 110000
     },
     {
       "id": "1002",
@@ -38,7 +40,9 @@
       "redirect_url": "https://www.adzuna.com/details/1004",
       "company": {"display_name": "Remote Labs"},
       "location": {"display_name": "Remote, United States", "area": ["US"]},
-      "category": {"tag": "it-jobs"}
+      "category": {"tag": "it-jobs"},
+      "salary_min": 80000,
+      "salary_max": 85000
     }
   ],
   "count": 4

@@ -36,13 +36,13 @@ def main(argv: list[str] | None = None) -> int:
         require_telegram=not args.dry_run,
     )
     result = run(cfg, dry_run=args.dry_run)
+    if result.jobs:
+        print_new_jobs(result.jobs, where=cfg.where)
     print(
         f"fetched={result.fetched} relevant={result.relevant} "
         f"new={result.new} sent_chunks={result.sent_chunks} "
         f"dry_run={result.dry_run} raw={result.raw_path}"
     )
-    if result.jobs:
-        print_new_jobs(result.jobs)
     if result.new == 0:
         print("no new matches; telegram silent")
     return 0

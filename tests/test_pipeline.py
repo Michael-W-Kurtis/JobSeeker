@@ -49,6 +49,8 @@ def _cfg(state_dir: Path) -> Config:
         where="New York",
         distance_km=40,
         max_days_old=7,
+        salary_min=60000,
+        salary_max=120000,
         country="us",
         state_dir=state_dir,
         repo_root=state_dir,
@@ -68,6 +70,10 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(result.new, 2)
             self.assertEqual(result.sent_chunks, 0)
             self.assertEqual(tg.urls, [])
+            self.assertIn("salary_min=60000", adz.urls[0])
+            self.assertIn("salary_max=120000", adz.urls[0])
+            self.assertIn("sort_by=salary", adz.urls[0])
+            self.assertNotIn("sort_dir=", adz.urls[0])
             store = SeenStore(state / "seen.sqlite")
             jobs = [normalize(raw) for raw in json.loads(fixture)["results"]]
             self.assertEqual(len(store.unseen(jobs)), 4)

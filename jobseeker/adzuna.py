@@ -19,6 +19,10 @@ DEFAULT_QUERIES: tuple[dict[str, str], ...] = (
     {"what": "sysadmin"},
     {"what_phrase": "help desk"},
     {"what_phrase": "solutions architect"},
+    {"what_phrase": "NOC engineer"},
+    {"what_phrase": "infrastructure engineer"},
+    {"what_phrase": "production engineer"},
+    {"what_phrase": "market operations engineer"},
 )
 
 
@@ -62,6 +66,8 @@ def search(
     where: str = "New York",
     distance_km: int = 40,
     max_days_old: int = 7,
+    salary_min: int = 60000,
+    salary_max: int = 120000,
     results_per_page: int = 50,
     category: str = "it-jobs",
     extra: Mapping[str, str] | None = None,
@@ -76,7 +82,9 @@ def search(
         "distance": str(distance_km),
         "max_days_old": str(max_days_old),
         "category": category,
-        "sort_by": "date",
+        "sort_by": "salary",
+        "salary_min": str(salary_min),
+        "salary_max": str(salary_max),
         "content-type": "application/json",
     }
     if extra:
@@ -118,6 +126,8 @@ def collect(
     where: str,
     distance_km: int,
     max_days_old: int,
+    salary_min: int = 60000,
+    salary_max: int = 120000,
     country: str = "us",
     queries: tuple[dict[str, str], ...] = DEFAULT_QUERIES,
     opener: urllib.request.OpenerDirector | None = None,
@@ -133,6 +143,8 @@ def collect(
             where=where,
             distance_km=distance_km,
             max_days_old=max_days_old,
+            salary_min=salary_min,
+            salary_max=salary_max,
             extra=extra,
             opener=opener,
         )

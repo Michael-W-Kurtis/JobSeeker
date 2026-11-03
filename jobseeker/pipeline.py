@@ -12,7 +12,7 @@ from jobseeker.adzuna import collect
 from jobseeker.config import Config
 from jobseeker.filter import relevant_jobs
 from jobseeker.store import SeenStore
-from jobseeker.telegram import send_digest
+from jobseeker.telegram import format_digest, send_digest
 
 NY = ZoneInfo("America/New_York")
 
@@ -52,11 +52,17 @@ def run(
         where=cfg.where,
         distance_km=cfg.distance_km,
         max_days_old=cfg.max_days_old,
+        salary_min=cfg.salary_min,
+        salary_max=cfg.salary_max,
         country=cfg.country,
         opener=opener,
     )
     raw_path = dump_raw(pages, cfg.state_dir)
-    matched = relevant_jobs(jobs)
+    matched = relevant_jobs(
+        jobs,
+        salary_min_excl=cfg.salary_min,
+        salary_max_excl=cfg.salary_max,
+    )
     store = SeenStore(cfg.state_dir / "seen.sqlite")
     try:
         new_jobs = store.unseen(matched)
@@ -101,10 +107,6 @@ def run(
         store.close()
 
 
-def print_new_jobs(jobs: list[Mapping[str, Any]]) -> None:
-    for job in jobs:
-        created = (job.get("created") or "")[:10]
-        print(
-            f"- {job.get('title')} | {job.get('company')} | "
-            f"{job.get('location')} | {created} | {job.get('url')}"
-        )
+def print_new_jobs(jobs: list[Mapping[str, Any]], *, where: str = "New York") -> None:
+    for chunk in format_digest(jobs, where=where):
+        print(chunk)
